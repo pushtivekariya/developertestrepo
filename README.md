@@ -1,10 +1,82 @@
-# Insurance Agency Multi-Client Template
+# Developer Test Repository - Variant Layout Development
 
-A fully dynamic, multi-client Next.js template for insurance agency websites. This template is designed to serve multiple clients from a single codebase, with all content, theming, and configuration driven by Supabase.
+This repository is for **external developers** building variant layouts for the Coverage Creatives insurance template system.
 
-## Overview
+---
 
-This repository is a **white-label insurance agency template** that can be deployed for any insurance client by simply changing environment variables and database entries. All content, colors, typography, and branding are fully dynamic.
+## Getting Started
+
+### 1. Get Your Test Client ID
+
+You will receive a **Client ID (UUID)** from Coverage Creatives. This ID links to pre-seeded test data in our database including:
+
+- Test client record
+- Website configuration
+- Theme settings (colors, fonts)
+- 2 office locations (Downtown + Suburban)
+- 5 policy pages (Auto, Home, Life, Business, Renters)
+- 2 about pages
+- 4 staff members
+- 5 glossary pages
+- Home page content
+
+### 2. Clone This Repository
+
+```bash
+git clone https://github.com/WorkSync-Developement/developertestrepo.git
+cd developertestrepo
+npm install
+```
+
+### 3. Configure Environment
+
+Create `.env.local` in the project root:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://bxpxxyxctdsyucqpwxrz.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cHh4eXhjdGRzeXVjcXB3eHJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM3NzY0NTEsImV4cCI6MjA1OTM1MjQ1MX0.v4SVc0fOEpK5_24yrfhbEqUGcW-DGrKEiEuXTjfaJZg
+NEXT_PUBLIC_CLIENT_ID=[your-uuid-from-coverage-creatives]
+```
+
+### 4. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## What You're Building
+
+You are creating **variant layouts** - alternative visual designs for template components. The variant system allows different visual styles while maintaining the same data structure.
+
+### Variant Components
+
+See `docs/TEMPLATE_VARIANT_SPECIFICATION.md` for the full component contract.
+
+Key components to implement variants for:
+- Header
+- Footer
+- HeroSection
+- IntroSection
+- Testimonials
+- PolicyPageTemplate
+- And more...
+
+### Variant Location
+
+Place your variant components in:
+```
+components/variants/[variant-name]/
+```
+
+---
+
+## Template Overview
+
+This is a **white-label insurance agency template** with all content driven by Supabase.
 
 ### Key Capabilities
 
@@ -49,37 +121,6 @@ This repository is a **white-label insurance agency template** that can be deplo
 - **CSS variables injected via `ThemeProvider`**
 - **All colors use theme-aware Tailwind classes**
 - **Typography variables for fonts and weights**
-
----
-
-## Quick Start
-
-### 1. Install Dependencies
-
-```bash
-npm install
-```
-
-### 2. Configure Environment
-
-Create `.env.local`:
-
-```env
-# Required: Client identifier
-NEXT_PUBLIC_CLIENT_ID=your-client-uuid
-
-# Required: Supabase connection
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
-
-### 3. Run Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -239,47 +280,32 @@ themeColor: 'var(--color-primary, #004080)'
 
 ---
 
-## Deploying for a New Client
+## Testing Checklist
 
-### Step 1: Database Setup
+Once set up, verify these pages render correctly:
 
-1. Insert client record in `clients` table
-2. Insert website config in `client_websites` table
-3. Insert theme settings in `client_theme_settings` table
-4. Populate content tables (policies, blogs, team, etc.)
+### Core Pages
+- [ ] Home page (all sections)
+- [ ] About page
+- [ ] Contact page
+- [ ] FAQ page
 
-### Step 2: Environment Configuration
+### Policy Pages
+- [ ] Policies list page
+- [ ] Individual policy page (e.g., `/policies/personal-insurance/auto-insurance-test-city-tx`)
 
-```env
-NEXT_PUBLIC_CLIENT_ID=new-client-uuid
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
+### Multi-Location Pages
+- [ ] Location landing page (`/locations/downtown`)
+- [ ] Location about page (`/locations/downtown/about`)
 
-### Step 3: Deploy
+### Staff & Glossary
+- [ ] Team page
+- [ ] Glossary page
 
-```bash
-npm run build
-npm start
-```
-
-The site will automatically:
-- Fetch client data from Supabase
-- Apply the client's theme colors
-- Display the client's content
-- Generate proper SEO metadata
-
----
-
-## Multi-Location Support
-
-For clients with multiple offices:
-
-1. Create multiple `client_locations` records
-2. Each location gets a `client_websites` entry with a unique `slug`
-3. Location pages available at `/locations/[slug]`
-4. `isMultiLocation()` utility detects multi-location clients
-5. Shared pages (policies, blog, about) link back to all locations
+### Theme System
+- [ ] CSS variables are applied correctly
+- [ ] Colors match theme settings
+- [ ] Fonts load properly
 
 ---
 
@@ -321,8 +347,17 @@ npx tsc --noEmit # TypeScript check
 
 See `/docs` folder for detailed implementation docs:
 
+- `TEMPLATE_VARIANT_SPECIFICATION.md` - **Component contracts and requirements**
 - `phase-7-dynamic-theming.md` - Theme system design
-- `phase-7-checklist.md` - Implementation checklist
+
+---
+
+## Support
+
+Contact Coverage Creatives if you have questions about:
+- Your test client ID
+- Database access issues
+- Component specifications
 
 ---
 
