@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&family=Caveat:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ============================================
+     * DYNAMIC THEME VARIABLES (Phase 7)
+     * These are overridden by ThemeProvider at runtime
+     * Fallback values are neutral - client branding via database
+     * ============================================ */
+    
+    /* Primary colors (neutral dark blue) */
+    --color-primary: #1e3a5f;
+    --color-primary-foreground: #FFFFFF;
+    
+    /* Accent colors (neutral blue for buttons) */
+    --color-accent: #2563eb;
+    --color-accent-foreground: #FFFFFF;
+    
+    /* Secondary colors (neutral gray-blue) */
+    --color-secondary: #64748b;
+    --color-secondary-foreground: #FFFFFF;
+    
+    /* Background colors (white/light gray) */
+    --color-background: #FFFFFF;
+    --color-background-alt: #f8fafc;
+    
+    /* Text colors */
+    --color-text-primary: #1e293b;
+    --color-text-body: #475569;
+    --color-text-muted: #94a3b8;
+    
+    /* Divider settings */
+    --divider-color: #e2e8f0;
+    --divider-thickness: 1px;
+    --divider-style: solid;
+    
+    /* Card Nav settings */
+    --card-nav-bg: var(--navbar-bg-color, #FFFFFF);
+    --card-nav-card-bg: var(--color-primary, #1e3a5f);
+    --card-nav-card-text: var(--color-primary-foreground, #FFFFFF);
+    --card-nav-card-bg-alt: var(--color-accent, #2563eb);
+    --card-nav-card-text-alt: var(--color-accent-foreground, #FFFFFF);
+    --card-nav-card-bg-tertiary: var(--color-secondary, #64748b);
+    --card-nav-card-text-tertiary: var(--color-secondary-foreground, #FFFFFF);
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-accent: 'Caveat', cursive;
+    --heading-weight: 700;
+    --body-weight: 400;
+    --heading-size-multiplier: 1;
+    --body-size-multiplier: 1;
+    
+    /* ============================================
+     * SHADCN/UI VARIABLES (existing)
+     * ============================================ */
+    --background: 194 60% 98%;
+    --foreground: 203 80% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 203 80% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 203 80% 16%;
+    --primary: 203 80% 28%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 196 20% 95%;
+    --secondary-foreground: 203 80% 16%;
+    --muted: 196 20% 95%;
+    --muted-foreground: 203 30% 40%;
+    --accent: 42 55% 80%;
+    --accent-foreground: 203 80% 16%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 196 20% 88%;
+    --input: 196 20% 88%;
+    --ring: 203 80% 28%;
+    --radius: 1rem;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    font-weight: var(--body-weight);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Coastal theme styling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: var(--heading-weight);
+  }
+  
+  .font-playfair {
+    font-family: var(--font-heading);
+  }
+  
+  .font-caveat {
+    font-family: var(--font-accent);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Component classes adapted from original implementation */
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-accent-foreground font-medium rounded-full px-6 py-3 shadow-md hover:shadow-lg hover:opacity-90 transition-all duration-300 ease-in-out;
+  }
+
+  .btn-secondary {
+    @apply bg-ocean/20 text-navy font-medium rounded-full px-6 py-3 shadow-md hover:shadow-lg hover:bg-ocean/30 transition-all duration-300 ease-in-out;
+  }
+
+  .floating-cta {
+    @apply fixed bottom-6 right-6 bg-accent text-white rounded-full shadow-lg z-50 w-14 h-14 flex items-center justify-center hover:opacity-90 transition-all duration-300 ease-in-out;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+  }
+
+  .hero-text {
+    @apply text-theme-body font-heading font-bold;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading font-bold text-primary mb-6;
+  }
+
+  .service-card {
+    @apply bg-white rounded-2xl shadow-md p-6 transition-all duration-300 hover:shadow-lg border border-ocean/50 hover:border-ocean;
+  }
+
+  .quote-card {
+    @apply bg-white rounded-2xl shadow-md p-6 transition-all duration-300 hover:shadow-lg border border-ocean/50 hover:border-ocean;
+  }
+
+  .testimonial-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-6 transition-all duration-300 hover:shadow-lg border border-ocean/50;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent hover:after:w-full after:transition-all after:duration-300;
+  }
+
+  .header {
+    @apply sticky top-0 z-50 backdrop-blur-sm transition-all duration-300;
+    background-color: color-mix(in srgb, var(--navbar-bg-color, #FFFFFF) calc(var(--navbar-bg-opacity, 0.9) * 100%), transparent);
+    height: var(--navbar-height, auto);
+  }
+
+  .header-scrolled {
+    @apply shadow-md;
+  }
+
+  .cta-button:hover {
+    background-color: var(--cta-hover-bg-color) !important;
+  }
+
+  /* Card Nav Styles */
+  .card-nav-container {
+    @apply w-full z-50;
+  }
+
+  .card-nav {
+    @apply block relative;
+    background-color: var(--card-nav-bg);
+  }
+
+  .card-nav-top {
+    @apply h-[60px] flex items-center justify-between px-4 py-2;
+  }
+
+  .card-nav-dropdown {
+    @apply absolute right-0 top-full p-3 z-50;
+  }
+
+  .card-nav-dropdown-content {
+    @apply flex gap-3 justify-end flex-wrap;
+  }
+
+  @media (max-width: 768px) {
+    .card-nav-dropdown-content {
+      @apply flex-col;
+    }
+  }
+
+  .nav-card {
+    @apply select-none relative flex flex-col gap-2 p-4 rounded-lg shadow-md;
+    min-width: 150px;
+    max-width: 200px;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .nav-card {
+      max-width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  .nav-card-label {
+    @apply font-medium tracking-tight text-base md:text-lg;
+  }
+
+  .nav-card-links {
+    @apply flex flex-col gap-1;
+  }
+
+  .nav-card-link {
+    @apply inline-flex items-center gap-1.5 no-underline cursor-pointer transition-opacity duration-300 hover:opacity-75 text-sm md:text-base;
+  }
+
+  .hamburger-menu {
+    @apply h-full flex flex-col items-center justify-center cursor-pointer gap-1.5;
+  }
+
+  .hamburger-line {
+    @apply w-[24px] h-[2px] bg-current transition-all duration-300 ease-linear origin-center;
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 3s ease-in-out infinite;
+}
+
+.animate-pulse-custom {
+  animation: pulseCustom 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from { 
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulseCustom {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Additional global styles */
+#root {
+  margin: 0 auto;
+}
+
+.bg-coastal-overlay {
+  background-color: rgba(167, 216, 222, 0.1);
+}
+
+.coastal-gradient {
+  background: linear-gradient(135deg, rgba(167, 216, 222, 0.2) 0%, rgba(249, 243, 224, 0.5) 100%);
+}
+
+/* Prevent pseudo-element content on icon containers */
+.icon-container::before,
+.icon-container::after,
+[data-no-pseudo]::before,
+[data-no-pseudo]::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Media query for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
