@@ -33,10 +33,12 @@ npm install
 Create `.env.local` in the project root:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://bxpxxyxctdsyucqpwxrz.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cHh4eXhjdGRzeXVjcXB3eHJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM3NzY0NTEsImV4cCI6MjA1OTM1MjQ1MX0.v4SVc0fOEpK5_24yrfhbEqUGcW-DGrKEiEuXTjfaJZg
+NEXT_PUBLIC_SUPABASE_URL=[provided by Coverage Creatives]
+NEXT_PUBLIC_SUPABASE_ANON_KEY=[provided by Coverage Creatives]
 NEXT_PUBLIC_CLIENT_ID=[your-uuid-from-coverage-creatives]
 ```
+
+> **Note**: Contact Coverage Creatives for your Supabase credentials and Client ID.
 
 ### 4. Run Development Server
 
@@ -50,19 +52,28 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## What You're Building
 
-You are creating **variant layouts** - alternative visual designs for template components. The variant system allows different visual styles while maintaining the same data structure.
+You are creating **variant layouts** - alternative visual designs for insurance agency websites. The variant system allows different visual styles while maintaining the same data structure.
+
+### Design Context
+
+All variants are for **insurance agencies**. Keep designs professional, trustworthy, and conversion-focused. Reference these live examples for inspiration:
+
+- **[larsongroupinsurance.com](https://larsongroupinsurance.com)** - Multi-location agency with modern, clean design
+- **[odonohoeagency.com](https://odonohoeagency.com)** - Single-location agency with traditional, professional feel
+
+Your variants should work for agencies like these - local insurance businesses serving home, auto, life, and commercial insurance needs.
 
 ### Variant Components
 
 See `docs/TEMPLATE_VARIANT_SPECIFICATION.md` for the full component contract.
 
 Key components to implement variants for:
-- Header
-- Footer
-- HeroSection
-- IntroSection
-- Testimonials
-- PolicyPageTemplate
+- Header (navigation, logo, phone CTA)
+- Footer (contact info, social links, locations)
+- HeroSection (main banner with CTA)
+- IntroSection (about/intro content)
+- Testimonials (customer reviews)
+- PolicyPageTemplate (insurance policy detail pages)
 - And more...
 
 ### Variant Location
